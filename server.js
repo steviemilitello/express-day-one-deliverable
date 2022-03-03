@@ -2,6 +2,7 @@
 
 const express = require('express')
 const req = require('express/lib/request')
+const res = require('express/lib/response')
 const app = express()
 
 const port = 3000
@@ -61,6 +62,23 @@ app.get("/magic/:question", (req, res) => {
     const response = Math.floor(Math.random() * magicBallArray.length)
     const randomResponse = magicBallArray[response]
     res.send(`<h1>${randomResponse}</h1>`)
+})
+
+// --- TAKE ONE DOWN AND PASS IT AROUND -----------------------------------------------------------------------
+
+app.get("/bottles", (req, res) => {
+    reqLog (req)
+    res.send("99 Bottles of beer on the wall" + <a href="/98">take one down, pass it around 98 Bottles of beer on the wall</a>)
+})
+
+app.get("/:number_of_bottles", (req, res) => {
+    reqLog (req)
+    bottleCount = req.params.number_of_bottles
+    res.send(`${bottleCount} Bottles of beer on the wall`)
+    if (bottleCount === 0) {
+        res.send(<a href="/">Start over!</a>)
+    } else 
+        res.send(`<a href="/${bottleCount} - 1">take one down, pass it around</a>`)
 })
 
 // -- LISTEN FOR PORT -----------------------------------------------------------------------------------------
