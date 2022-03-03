@@ -23,6 +23,14 @@ app.get("/greeting/:name", (req, res) => {
     res.send(`Wow, hello there ${req.params.name}!`)
 })
 
+// --- TIP CALCULATOR -----------------------------------------------------------------------------------------
+
+app.get("/tip/:total/:tipPercentage", (req, res) => {
+    reqLog(req)
+    const totalAmount = req.params.total * req.params.tipPercentage / 100
+    res.send(`the tip is ${totalAmount}`)
+})
+
 // -- LISTEN FOR PORT -----------------------------------------------------------------------------------------
 
 app.listen(port, () => {
